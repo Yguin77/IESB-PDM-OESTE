@@ -1,9 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { StyleSheet, Text, View } from 'react-native';
-import {titulo} from './util.js';
-import  titulo_padrao  from './util.js';
-import { Button, Styleshhet, Text, TextInput, View} from 'react-native-web';
 import { rotulo_btn_cadastro, rotulo_input_metas , rotulo_lista_metas} from '../../../mensagens.js';
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
 
 export default function App() {
