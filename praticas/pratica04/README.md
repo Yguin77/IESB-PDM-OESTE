@@ -91,3 +91,5 @@ git push origin feature/pratica04
 ```
 
 Na **Aula 05**, vamos melhorar listas (`FlatList`) e persistir dados no aparelho (`AsyncStorage`). A organização em componentes fica para a Aula 06.
+
+
