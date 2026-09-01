@@ -1,15 +1,15 @@
-
-import { StyleSheet, Text, View } from 'react-native';
-import { rotulo_btn_cadastro, rotulo_input_metas , rotulo_lista_metas} from '../../../mensagens.js';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
-
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import { titulo } from './util';
+import outro_nome from './util';
 
 export default function App() {
   return (
-    <View style={styles.mainContainer}>
-     <TextInput placeholder={rotulo_btn_cadastro}></TextInput>
-     <Button title={rotulo_btn_cadastro}></Button>
-     <Text> {rotulo_lista_metas}</Text>
+    <View style={styles.container}>
+      <Text style={{margin:20}}>{titulo}</Text>
+      <Text style={styles.text}>{outro_nome}</Text>
+      <Button title='clique aqui...' />
+      <StatusBar style="auto" />
     </View>
   );
 }
@@ -22,11 +22,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text:{
-    margin: 20,
-    fontSize
-  },
-  
-  mainContainer: {
-    padding :30
+    margin:20,
+    fontSize:26,
+    color: 'red'
   }
 });
