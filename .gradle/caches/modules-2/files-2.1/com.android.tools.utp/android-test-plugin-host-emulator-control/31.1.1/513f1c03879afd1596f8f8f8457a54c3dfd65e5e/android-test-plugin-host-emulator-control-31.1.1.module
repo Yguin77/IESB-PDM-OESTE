@@ -1,0 +1,185 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.android.tools.utp",
+    "module": "android-test-plugin-host-emulator-control",
+    "version": "31.1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "android-test-plugin-host-emulator-control-31.1.1.jar",
+          "url": "android-test-plugin-host-emulator-control-31.1.1.jar",
+          "size": 6753,
+          "sha512": "6528ef31a2a616cc4bf1f35fb329cf1c9c4b1b67c67b61ad303893431d9a6c3d92202fd0f034dcdc6be1cc9272c569f60f6b1ac6c94087090b299261f643e99b",
+          "sha256": "496698f5d2cde5c8ea312973001658dc28e89ea06a0af0cfc1c4acc7489a32f4",
+          "sha1": "05e8fd4c2d96a69e4c0e239611119127a216990f",
+          "md5": "5ecd9a347ce6d361480ae38c1645e99b"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "com.android.tools",
+          "module": "common",
+          "version": {
+            "requires": "31.1.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.8.20-RC2"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-coroutines-core",
+          "version": {
+            "requires": "1.6.3"
+          }
+        },
+        {
+          "group": "commons-io",
+          "module": "commons-io",
+          "version": {
+            "requires": "2.4"
+          }
+        },
+        {
+          "group": "com.google.code.gson",
+          "module": "gson",
+          "version": {
+            "requires": "2.8.6"
+          }
+        },
+        {
+          "group": "com.google.protobuf",
+          "module": "protobuf-java",
+          "version": {
+            "requires": "3.19.3"
+          }
+        },
+        {
+          "group": "com.google.guava",
+          "module": "guava",
+          "version": {
+            "requires": "31.1-jre"
+          }
+        },
+        {
+          "group": "com.android.tools.utp",
+          "module": "android-test-plugin-host-emulator-control-proto",
+          "version": {
+            "requires": "31.1.1"
+          }
+        },
+        {
+          "group": "com.android.tools.emulator",
+          "module": "proto",
+          "version": {
+            "requires": "31.1.1"
+          }
+        },
+        {
+          "group": "com.google.testing.platform",
+          "module": "android-device-provider-local",
+          "version": {
+            "requires": "0.0.8-alpha08"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "android-test-plugin-host-emulator-control-31.1.1.jar",
+          "url": "android-test-plugin-host-emulator-control-31.1.1.jar",
+          "size": 6753,
+          "sha512": "6528ef31a2a616cc4bf1f35fb329cf1c9c4b1b67c67b61ad303893431d9a6c3d92202fd0f034dcdc6be1cc9272c569f60f6b1ac6c94087090b299261f643e99b",
+          "sha256": "496698f5d2cde5c8ea312973001658dc28e89ea06a0af0cfc1c4acc7489a32f4",
+          "sha1": "05e8fd4c2d96a69e4c0e239611119127a216990f",
+          "md5": "5ecd9a347ce6d361480ae38c1645e99b"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "android-test-plugin-host-emulator-control-31.1.1-javadoc.jar",
+          "url": "android-test-plugin-host-emulator-control-31.1.1-javadoc.jar",
+          "size": 261,
+          "sha512": "fae6439957c0bb8a4cb09210f1866284271771941fe8f323e2d27a6d407fa8e4fdca5459681e03a00a7001e141c4aedcff18e75d403d50798cdd55b76f290bbb",
+          "sha256": "c11fd3edfaa1335e2f65fe91f27b4195a655d4aecb72d41dbc310c5c81c7f0aa",
+          "sha1": "5d76bac6b8d771d1352484b3e43567bcc9d610b3",
+          "md5": "fcf2007eb5d0c0dfcc5d570e2b81d932"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "android-test-plugin-host-emulator-control-31.1.1-sources.jar",
+          "url": "android-test-plugin-host-emulator-control-31.1.1-sources.jar",
+          "size": 3386,
+          "sha512": "b6e6f2834273af86c2b50441ea23c16597c7a86ec6f8acaa0ef0922d1ab88e173f81f77119e73993f645191bcd887f61265e31cd80585757bb131453b4d3960f",
+          "sha256": "41e84862094466b42b5caa37d1fb8a132c25b9259ef914516a45350c973a2578",
+          "sha1": "e5a7775176e63c3c27fd460c37050300be05b36a",
+          "md5": "41f10e18bc6f2d73019fe12ee1d24f9b"
+        },
+        {
+          "name": "android-test-plugin-host-emulator-control-31.1.1-sources.jar",
+          "url": "android-test-plugin-host-emulator-control-31.1.1-sources.jar",
+          "size": 3386,
+          "sha512": "b6e6f2834273af86c2b50441ea23c16597c7a86ec6f8acaa0ef0922d1ab88e173f81f77119e73993f645191bcd887f61265e31cd80585757bb131453b4d3960f",
+          "sha256": "41e84862094466b42b5caa37d1fb8a132c25b9259ef914516a45350c973a2578",
+          "sha1": "e5a7775176e63c3c27fd460c37050300be05b36a",
+          "md5": "41f10e18bc6f2d73019fe12ee1d24f9b"
+        }
+      ]
+    }
+  ]
+}
