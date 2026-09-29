@@ -5,6 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import DespesaRecentes from './screens/DespesaRecentes';
 import TodasDespesas from './screens/TodasDespesas';
 import GerenciarDespesa from './screens/GerenciarDespesa';
+import { Ionicons } from '@expo/vector-icons';
+
 
 export default function App() {
 
@@ -23,7 +25,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-          <Stack.Screen name='Despesas' component={BottonTabScreen} />
+          <Stack.Screen name='Despesas' component={BottonTabScreen}  options={{ headerShown: false }}/>
           <Stack.Screen name='GerenciarDespesa' component={GerenciarDespesa} />
       </Stack.Navigator>
     </NavigationContainer>
