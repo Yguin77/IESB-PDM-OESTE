@@ -92,3 +92,7 @@ git push origin feature/pratica03
 ```
 
 Na **Aula 04**, a interface ganha vida com **estado (`useState`)**: digitar, adicionar e remover tarefas de verdade.
+
+
+instalar: npx expo insatall react-native-safe-area-context
+npx expo insatall react-native-safe-area-context
