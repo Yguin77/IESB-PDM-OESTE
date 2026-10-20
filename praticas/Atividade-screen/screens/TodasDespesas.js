@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function TodasDespeas() {
+export default function TodasDespesas() {
   return (
     <View style={styles.container}>
-      <Text>TodasDespeas</Text>
+      <Text>Todas as Despesas</Text>
     </View>
   );
 }
