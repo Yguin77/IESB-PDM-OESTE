@@ -8,16 +8,27 @@ import GerenciarDespesa from './screens/GerenciarDespesa';
 import { Ionicons } from '@expo/vector-icons';
 
 
+
 export default function App() {
 
   const Tab = createBottomTabNavigator();
 
   function BottonTabScreen(){
     return(
-      <Tab.Navigator>
-        <Tab.Screen name="DespesaRecentes" component={DespesaRecentes} />
-        <Tab.Screen name="TodasDespesas" component={TodasDespesas} />
-      </Tab.Navigator>
+     <Tab.Navigator>
+  <Tab.Screen
+    name="DespesaRecentes"
+    component={DespesaRecentes}
+    options={{
+      tabBarIcon: ({ color, size }) => (
+        <Ionicons name="hourglass" size={size} color={color} />
+      ),
+      tabBarLabel: 'Recentes',
+      title: 'Despesas Recentes',
+    }}
+  />
+  <Tab.Screen name="TodasDespesas" component={TodasDespesas} />
+</Tab.Navigator>
     )
   }
 

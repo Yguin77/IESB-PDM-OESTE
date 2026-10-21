@@ -1,14 +1,20 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, useColorScheme } from 'react-native';
+import { COLORS } from '../../constants/theme';
+import { formatCurrency } from '../../util/data';
 
-export default function DespesaSumario({ despesas, periodo }) {
-  const somaDespesas = despesas.reduce((acumulador, item) => acumulador + item.valor, 0);
+export default function DespesaSumario({ quantidade, total, periodo }) {
+  const scheme = useColorScheme();
+  const theme = COLORS[scheme === 'dark' ? 'dark' : 'light'];
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.periodo}>{periodo}</Text>
-      <Text style={[styles.soma, somaDespesas > 200 && styles.somaAlta]}>
-        R$ {somaDespesas.toFixed(2)}
-      </Text>
+    <View style={[styles.container, { backgroundColor: theme.card, borderColor: theme.border }]}>
+      <View>
+        {periodo ? <Text style={[styles.periodo, { color: theme.textSecondary }]}>{periodo}</Text> : null}
+        <Text style={[styles.count, { color: theme.text }]}>
+          {quantidade} {quantidade === 1 ? 'despesa' : 'despesas'}
+        </Text>
+      </View>
+      <Text style={[styles.total, { color: theme.primary }]}>{formatCurrency(total)}</Text>
     </View>
   );
 }
@@ -16,13 +22,15 @@ export default function DespesaSumario({ despesas, periodo }) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#dbeafe',
-    padding: 12,
-    borderRadius: 8,
+    justifyContent: 'space-between',
+    padding: 14,
+    marginHorizontal: 12,
+    marginBottom: 6,
+    borderRadius: 10,
+    borderWidth: 1,
   },
-  periodo: { fontSize: 14, color: '#1e3a8a' },
-  soma: { fontSize: 18, fontWeight: 'bold', color: '#1e3a8a' },
-  somaAlta: { color: '#dc2626' }, // bônus: acima de R$ 200,00
+  periodo: { fontSize: 12, textTransform: 'uppercase' },
+  count: { fontSize: 15, fontWeight: '600' },
+  total: { fontSize: 20, fontWeight: 'bold' },
 });

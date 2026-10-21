@@ -1,7 +1,8 @@
 import { createContext, useContext, useState } from 'react';
 import { diasAtras } from '../util/data';
 
-export const CATEGORIAS = ['Alimentação', 'Transporte', 'Lazer', 'Contas'];
+
+export const CATEGORIES = ['Alimentação', 'Transporte', 'Lazer', 'Saúde', 'Outros']; // use as suas
 
 const INICIAIS = [
   { id: '1', descricao: 'Supermercado', valor: 89.9, categoria: 'Alimentação', data: diasAtras(1) },

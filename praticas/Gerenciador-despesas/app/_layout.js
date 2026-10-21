@@ -1,16 +1,13 @@
 import { Stack } from 'expo-router';
-import { DespesasProvider } from '../src/context/DespesasContext';
+import { ExpensesContextProvider } from '../src/store/expenses-context';
 
 export default function RootLayout() {
   return (
-    <DespesasProvider>
+    <ExpensesContextProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="gerenciar"
-          options={{ title: 'Gerenciar despesa', presentation: 'modal' }}
-        />
+        <Stack.Screen name="gerenciar" options={{ title: 'Nova despesa' }} />
       </Stack>
-    </DespesasProvider>
+    </ExpensesContextProvider>
   );
 }
