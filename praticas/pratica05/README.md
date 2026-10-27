@@ -1,79 +1,115 @@
-# 💻 Prática 05: FlatList e App que Não Esquece
+# 📚 MetasSemestre
 
-Nesta prática o To-Do ganha lista eficiente e persistência local. **Ainda não** vamos extrair componentes — isso é a Prática 06.
+Aplicativo em React Native (Expo) para cadastro de metas de estudo, com
+persistência local usando `AsyncStorage`. Desenvolvido como parte da
+prática 05 da disciplina IESB-PDM-OESTE.
 
-## 🎯 Objetivos
+## ✨ Funcionalidades
 
-* Substituir `.map()` por `FlatList`.
-* Salvar e carregar tarefas com AsyncStorage + `useEffect`.
-* Validar que fechar e reabrir o app mantém os dados.
+- Cadastrar metas de estudo (com validação de texto vazio)
+- Remover metas
+- Marcar/desmarcar metas como concluídas (texto riscado)
+- Contador de metas pendentes / concluídas no cabeçalho
+- Persistência local: as metas sobrevivem ao fechar e reabrir o app
 
----
+## 🛠️ Tecnologias
 
-## 📦 Fluxo Git
+- React Native + Expo (`blank` template)
+- `useState`, `useEffect`
+- `@react-native-async-storage/async-storage`
+- `react-native-safe-area-context`
+- Componentização (`Pressable`, `FlatList`, `android_ripple`)
 
-1. Crie a Issue da **Prática 05**.
-2. Branch:
+## 📂 Estrutura do projeto
 
-```bash
-git checkout -b feature/pratica05
+```
+MetasSemestre/
+├── App.js
+├── components/
+│   ├── MetaInput.js   → input de texto + botão de adicionar
+│   └── MetaList.js    → lista (FlatList) com concluir/excluir
+├── assets/
+│   └── icon.png
+└── ...
 ```
 
-3. Trabalhe em `praticas/pratica05` (evolua a base da Prática 04).
+## 🚀 Como rodar
 
 ```bash
 npm install
-npx expo start
+npx expo start --web
 ```
 
----
+Ou, para rodar em um dispositivo físico com o app Expo Go, escaneie o QR
+code exibido no terminal.
 
-## 🛠️ Parte A — FlatList
+## 🧠 Onde está a lógica de persistência
 
-1. Remova o `.map()` da lista.
-2. Importe `FlatList` de `react-native`.
-3. Configure:
+Toda a lógica de `AsyncStorage` fica em `App.js`, em dois `useEffect`
+separados:
 
-* `data={tasks}`
-* `keyExtractor={(item) => item.id}`
-* `renderItem={...}` desenhando cada tarefa (card ainda pode ficar inline no `App`)
+### 1. `useEffect` de **carregamento** (linhas ~26–46)
 
-4. Teste adicionando **muitas** tarefas (15+) e confirme a rolagem suave.
+Executa **uma única vez**, na montagem do componente (array de
+dependências `[]`). Ele busca os dados salvos com a chave
+`@metas_semestre`, faz `JSON.parse` e popula o estado `metas`. Ao
+terminar (com ou sem erro), marca `carregado = true`.
 
----
-
-## 🛠️ Parte B — AsyncStorage
-
-1. Pare o bundler (Ctrl+C) e instale:
-
-```bash
-npx expo install @react-native-async-storage/async-storage
+```js
+useEffect(() => {
+  async function carregarMetas() {
+    try {
+      const dados = await AsyncStorage.getItem(STORAGE_KEY);
+      if (dados !== null) setMetas(JSON.parse(dados));
+    } catch (erro) {
+      // trata erro com Alert
+    } finally {
+      setCarregado(true);
+    }
+  }
+  carregarMetas();
+}, []);
 ```
 
-2. Crie `saveTasks` (async): grave a lista com `setItem` + `JSON.stringify`.
-3. Chame `saveTasks` após adicionar e após deletar (com a lista já atualizada).
-4. Crie `loadTasks` (async): leia com `getItem`, faça `JSON.parse` se houver valor, e use `setTasks`.
-5. No `useEffect` com `[]`, chame `loadTasks()` na montagem.
+### 2. `useEffect` de **salvamento** (linhas ~51–68)
 
-### Teste extremo
+Executa toda vez que o array `metas` muda (dependência `[metas,
+carregado]`). Faz `JSON.stringify` do array e salva no `AsyncStorage`
+com a mesma chave. A flag `carregado` evita que esse efeito rode antes
+do carregamento inicial terminar — sem ela, o app sobrescreveria o
+armazenamento com uma lista vazia assim que monta, apagando os dados
+salvos anteriormente.
 
-Adicione 3 tarefas → feche o app por completo (remover dos recentes) → abra de novo → as tarefas devem continuar lá.
-
----
-
-## ✅ Critérios de entrega
-
-* [ ] `FlatList` rolando com muitos itens
-* [ ] Persistência: fechar e reabrir mantém as tarefas
-* [ ] Add e delete continuam funcionando
-* [ ] Issue, branch `feature/pratica05`, commit, push e Pull Request
-
-### Commit sugerido
-
-```bash
-git add .
-git commit -m "Feat: Adiciona FlatList e AsyncStorage para persistir tarefas"
-git push origin feature/pratica05
+```js
+useEffect(() => {
+  if (!carregado) return;
+  async function salvarMetas() {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(metas));
+    } catch (erro) {
+      // trata erro com Alert
+    }
+  }
+  salvarMetas();
+}, [metas, carregado]);
 ```
 
-Na **Aula 06**, vamos **organizar o código**: extrair o card da tarefa para um componente reutilizável com props.
+## 📸 Prints
+
+| Lista vazia | Com itens cadastrados | Após reabrir o app |
+|---|---|---|
+| ![lista vazia](./MetasSemestre/prints/ListaVazia.png) | ![com itens](./MetasSemestre/prints/ComItens.png) | ![após reabrir](./MetasSemestre/prints/ReabrindoApp.png) |
+## ✅ Checklist de requisitos atendidos
+
+- [x] `useState` para input e lista de metas
+- [x] Objeto de meta com `id`, `texto`, `criadaEm` (+ `concluida` no desafio opcional)
+- [x] Componentização: `MetaInput.js` e `MetaList.js` com as props sugeridas
+- [x] Adição com validação via `Alert`
+- [x] Remoção com `Pressable` + `filter`
+- [x] `android_ripple` nos botões
+- [x] `useEffect` de carga e de salvamento no `AsyncStorage`
+- [x] `try/catch` com mensagens amigáveis
+- [x] `SafeAreaProvider` + `SafeAreaView`
+- [x] Cabeçalho com `Image` local + título
+- [x] `FlatList` para a lista de metas
+- [x] Desafio opcional: marcar concluída + contador no cabeçalho
